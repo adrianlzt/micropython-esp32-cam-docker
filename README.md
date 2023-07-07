@@ -13,3 +13,8 @@ To flash the built firmware:
 ```
 docker run --device /dev/ttyACM0 --rm micropython-esp32 idf.py -p /dev/ttyACM0 -D MICROPY_BOARD=ESP32_CAM -D MICROPY_BOARD_DIR=/root/micropython/ports/esp32/boards/ESP32_CAM -B build-ESP32_CAM flash
 ```
+
+To flash the firmware already compiled and uploaded to this repo:
+```
+esptool.py -p /dev/ttyACM0 -b 460800 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 40m --flash_size 4MB -z 0x1000 firmware/micropython-813d55-esp32-camera-bt-esp-idf-5.0.2.bin
+```
